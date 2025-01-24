@@ -20,7 +20,7 @@ spec:
           image: pihole/pihole:latest
           env:
             - name: TZ
-              value: "Germany/Berlin"
+              value: "Europe/Berlin"
             - name: DNSMASQ_USER
               value: root
             - name: PIHOLE_UID
