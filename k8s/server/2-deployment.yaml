@@ -4,7 +4,7 @@ metadata:
   namespace: pi-hole
   name: pi-hole-server
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: webapp
@@ -21,6 +21,10 @@ spec:
           env:
             - name: TZ
               value: "Germany/Berlin"
+            - name: DNSMASQ_USER
+              value: root
+            - name: PIHOLE_UID
+              value: "0"
             - name: WEBPASSWORD
               valueFrom:
                 secretKeyRef:
@@ -39,7 +43,7 @@ spec:
 
           livenessProbe:
             httpGet:
-              path: /
+              path: /admin
               port: 80
               scheme: HTTP
             failureThreshold: 5
