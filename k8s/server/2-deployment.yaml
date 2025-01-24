@@ -55,6 +55,6 @@ spec:
         - name: pi-hole-data
           persistentVolumeClaim:
             claimName: nfs-pi-hole-data-pvc
-        - name: pi-hole-dsnmasq
+        - name: pi-hole-dnsmasq
           persistentVolumeClaim:
-            claimName: nfs-pi-hole-dsnmasq-pvc
+            claimName: nfs-pi-hole-dnsmasq-pvc
