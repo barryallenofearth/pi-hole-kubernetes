@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: pi-hole
+  name: pi-hole-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: pi-hole-server
+          image: pihole/pihole:latest
+          env:
+            - name: TZ
+              value: "Germany/Berlin"
+            - name: WEBPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pi-hole-admin
+                  key: password
+          ports:
+            - name: dns-tcp
+              containerPort: 53
+              protocol: TCP
+            - name: dns-udp
+              containerPort: 53
+              protocol: UDP
+            - name: http
+              containerPort: 80
+              protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            failureThreshold: 5
+            periodSeconds: 30
+            timeoutSeconds: 10
+          resources: { }
+          volumeMounts:
+            - mountPath: /etc/pihole
+              name: pi-hole-data
+            - mountPath: /etc/dnsmasq.d
+              name: pi-hole-dnsmasq
+      volumes:
+        - name: pi-hole-data
+          persistentVolumeClaim:
+            claimName: nfs-pi-hole-data-pvc
+        - name: pi-hole-data
+          persistentVolumeClaim:
+            claimName: nfs-pi-hole-dsnmasq-pvc

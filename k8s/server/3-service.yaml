@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: pi-hole
+  name: webapp
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+    - name: dns-tcp
+      port: 53
+      targetPort: dns-tcp
+    - name: dns-upd
+      port: 53
+      targetPort: dns-upd
+  selector:
+    app: webapp

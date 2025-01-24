@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv-pi-hole-dsnmasq
+  namespace: pi-hole
+  labels:
+    volume: pi-hole-dsnmasq
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /volume1/kubernetes-pi-hole/dsnmasq
+    server: thevoid
