@@ -14,9 +14,9 @@ spec:
       port: 53
       protocol: TCP
       targetPort: dns-tcp
-    - name: dns-upd
+    - name: dns-udp
       port: 53
       protocol: UDP
-      targetPort: dns-upd
+      targetPort: dns-udp
   selector:
     app: webapp
