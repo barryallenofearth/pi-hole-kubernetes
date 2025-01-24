@@ -9,14 +9,14 @@ spec:
     - name: http
       port: 80
       protocol: TCP
-      targetPort: http
+      targetPort: 80
     - name: dns-tcp
       port: 53
       protocol: TCP
-      targetPort: dns-tcp
+      targetPort: 53
     - name: dns-udp
       port: 53
       protocol: UDP
-      targetPort: dns-udp
+      targetPort: 53
   selector:
     app: webapp
