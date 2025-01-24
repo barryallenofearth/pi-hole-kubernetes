@@ -18,6 +18,22 @@ spec:
       protocol: TCP
       port: 443
       targetPort: 443
+  selector:
+    app: webapp
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: pi-hole
+  name: webapp
+  annotations:
+    metallb.universe.tf/allow-shared-ip: pihole
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.178.203
+  sessionAffinity: ClientIP
+  ports:
     - name: dns-tcp
       protocol: TCP
       port: 53
@@ -32,3 +48,4 @@ spec:
       targetPort: 67
   selector:
     app: webapp
+
