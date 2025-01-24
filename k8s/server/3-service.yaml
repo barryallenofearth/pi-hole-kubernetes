@@ -5,18 +5,28 @@ metadata:
   name: webapp
 spec:
   type: LoadBalancer
+  loadBalancerIP: 192.168.178.203
+  sessionAffinity: ClientIP
   ports:
     - name: http
+      protocol: TCP
       port: 80
-      protocol: TCP
       targetPort: 80
-    - name: dns-tcp
-      port: 53
+    - name: https
       protocol: TCP
+      port: 443
+      targetPort: 443
+    - name: dns-tcp
+      protocol: TCP
+      port: 53
       targetPort: 53
     - name: dns-udp
-      port: 53
       protocol: UDP
+      port: 53
       targetPort: 53
+    - name: dns-dhcp
+      protocol: UDP
+      port: 67
+      targetPort: 67
   selector:
     app: webapp

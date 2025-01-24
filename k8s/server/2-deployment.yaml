@@ -37,8 +37,14 @@ spec:
             - name: dns-udp
               containerPort: 53
               protocol: UDP
+            - name: dns-dhcp
+              containerPort: 67
+              protocol: UDP
             - name: http
               containerPort: 80
+              protocol: TCP
+            - containerPort: 443
+              name: https
               protocol: TCP
 
           livenessProbe:
