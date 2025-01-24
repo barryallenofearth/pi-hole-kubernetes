@@ -11,4 +11,4 @@ spec:
   storageClassName: ""
   resources:
     requests:
-      storage: 20.Gi
+      storage: 10.Gi
