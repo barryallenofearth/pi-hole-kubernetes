@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       volume: pi-hole-dnsmasq
-  accessModes: [ "ReadWriteOnce" ]
+  accessModes: [ "ReadWriteMany" ]
   storageClassName: ""
   resources:
     requests:
