@@ -13,11 +13,11 @@ spec:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: http
     - name: https
       protocol: TCP
       port: 443
-      targetPort: 443
+      targetPort: https
   selector:
     app: webapp
 
@@ -37,15 +37,15 @@ spec:
     - name: dns-tcp
       protocol: TCP
       port: 53
-      targetPort: 53
+      targetPort: dns-tcp
     - name: dns-udp
       protocol: UDP
       port: 53
-      targetPort: 53
+      targetPort: dns-udp
     - name: dns-dhcp
       protocol: UDP
       port: 67
-      targetPort: 67
+      targetPort: dns-dhcp
   selector:
     app: webapp
 

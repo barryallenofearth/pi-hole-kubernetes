@@ -7,8 +7,8 @@ spec:
   selector:
     matchLabels:
       volume: pi-hole-dnsmasq
-  accessModes: [ "ReadWriteMany" ]
+  accessModes: [ "ReadWriteOnce" ]
   storageClassName: ""
   resources:
     requests:
-      storage: 10.Gi
+      storage: 10Gi

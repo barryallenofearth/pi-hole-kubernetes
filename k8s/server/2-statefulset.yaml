@@ -1,15 +1,14 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   namespace: pi-hole
   name: pi-hole-server
 spec:
   replicas: 1
+  serviceName: pi-hole
   selector:
     matchLabels:
       app: webapp
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
@@ -55,7 +54,13 @@ spec:
             failureThreshold: 5
             periodSeconds: 10
             timeoutSeconds: 5
-          resources: { }
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: "2"
+              memory: 512Mi
           volumeMounts:
             - mountPath: /etc/pihole
               name: pi-hole-data
