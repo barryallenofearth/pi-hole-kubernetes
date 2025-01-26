@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       volume: pi-hole-data
-  accessModes: [ "ReadWriteMany" ]
+  accessModes: [ "ReadWriteOnce" ]
   storageClassName: ""
   resources:
     requests:
