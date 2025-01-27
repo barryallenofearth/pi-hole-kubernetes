@@ -68,8 +68,10 @@ spec:
               name: pi-hole-dnsmasq
       volumes:
         - name: pi-hole-data
-          persistentVolumeClaim:
-            claimName: nfs-pi-hole-data-pvc
+          emptyDir: {}
+#          persistentVolumeClaim:
+#            claimName: nfs-pi-hole-data-pvc
         - name: pi-hole-dnsmasq
-          persistentVolumeClaim:
-            claimName: nfs-pi-hole-dnsmasq-pvc
+          emptyDir: {}
+#          persistentVolumeClaim:
+#            claimName: nfs-pi-hole-dnsmasq-pvc
