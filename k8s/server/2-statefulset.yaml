@@ -24,6 +24,15 @@ spec:
               value: root
             - name: PIHOLE_UID
               value: "0"
+            - name: REV_SERVER
+              value: "true"
+            - name: REV_SERVER_DOMAIN
+              value: "fritz.box"
+            - name: REV_SERVER_TARGET
+              value: "192.168.178.1"
+            - name: REV_SERVER_CIDR
+              value: "192.168.178.0/24"
+
             - name: WEBPASSWORD
               valueFrom:
                 secretKeyRef:
