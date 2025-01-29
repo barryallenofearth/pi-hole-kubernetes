@@ -66,10 +66,24 @@ spec:
               name: pi-hole-data
             - mountPath: /etc/dnsmasq.d
               name: pi-hole-dnsmasq
-      volumes:
-        - name: pi-hole-data
-          persistentVolumeClaim:
-            claimName: nfs-pi-hole-data-pvc
-        - name: pi-hole-dnsmasq
-          persistentVolumeClaim:
-            claimName: nfs-pi-hole-dnsmasq-pvc
+  volumeClaimTemplates:
+    - metadata:
+        name: pi-hole-data
+      spec:
+        selector:
+          matchLabels:
+            volume: pi-hole-data
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+    - metadata:
+        name: pi-hole-dnsmasq
+      spec:
+        selector:
+          matchLabels:
+            volume: pi-hole-dnsmasq
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
