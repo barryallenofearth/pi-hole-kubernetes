@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-pv-pi-hole-dnsmasq-1
-  namespace: pi-hole
+  name: nfs-pv-pi-hole-dnsmasq-2
   labels:
     volume: pi-hole-dnsmasq
 spec:
