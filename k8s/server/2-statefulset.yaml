@@ -73,6 +73,7 @@ spec:
         selector:
           matchLabels:
             volume: pi-hole-data
+        storageClassName: ""
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
@@ -83,6 +84,7 @@ spec:
         selector:
           matchLabels:
             volume: pi-hole-dnsmasq
+        storageClassName: ""
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
