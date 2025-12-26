@@ -4,7 +4,7 @@ metadata:
   namespace: pi-hole
   name: pi-hole-server
 spec:
-  replicas: 2
+  replicas: 1
   serviceName: pi-hole
   selector:
     matchLabels:
